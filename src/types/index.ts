@@ -5,7 +5,7 @@ export interface Guest {
   additionals: number;
   is_vip: boolean;
   is_attending: boolean | null;
-  parent_id: number;
+  parent_id: number | null;
   created_at?: string;
   updated_at?: string;
 }

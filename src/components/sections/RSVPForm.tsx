@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from 'react';
 import { Section, SectionHeader, Container, Card, CardContent, Button, Input } from '@/components/ui';
-import { cn, debounce, matchesSearch } from '@/lib/utils';
+import { cn, debounce } from '@/lib/utils';
+import { supabase } from '@/lib/supabase';
 import type { Guest, RSVPFormData } from '@/types';
 
 // RSVP Form Steps
@@ -13,36 +14,61 @@ interface RSVPFormProps {
   subtitle?: string;
 }
 
-// Mock API functions - replace with actual API calls
+// Search guests in Supabase
 async function searchGuests(query: string): Promise<Guest[]> {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 300));
-
-  // Mock data - in production, this would be an API call
-  const mockVIPs: Guest[] = [
-    { id: 1, full_name: 'Juan Dela Cruz', additionals: 2, is_vip: true, is_attending: null, parent_id: 0 },
-    { id: 2, full_name: 'Maria Santos', additionals: 0, is_vip: true, is_attending: null, parent_id: 0 },
-    { id: 3, full_name: 'Pedro Reyes', additionals: 1, is_vip: true, is_attending: null, parent_id: 0 },
-    { id: 4, full_name: 'Ana Garcia', additionals: 3, is_vip: true, is_attending: null, parent_id: 0 },
-    { id: 5, full_name: 'Carlos Mendoza', additionals: 0, is_vip: true, is_attending: true, parent_id: 0 }, // Already responded
-  ];
-
   if (!query.trim()) return [];
 
-  // Filter VIPs only, case-insensitive partial match
-  return mockVIPs.filter(
-    (guest) => guest.is_vip && guest.parent_id === 0 && matchesSearch(guest.full_name, query)
-  );
+  const { data, error } = await supabase
+    .from('guests')
+    .select('*')
+    .eq('is_vip', true)
+    .is('parent_id', null)
+    .ilike('full_name', `%${query}%`)
+    .limit(10);
+
+  if (error) {
+    console.error('Error searching guests:', error);
+    throw new Error('Failed to search guests');
+  }
+
+  return data || [];
 }
 
+// Submit RSVP to Supabase
 async function submitRSVP(data: RSVPFormData): Promise<{ success: boolean; message: string }> {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  // Update the VIP's attendance status
+  const { error: updateError } = await supabase
+    .from('guests')
+    .update({
+      is_attending: data.is_attending,
+      updated_at: new Date().toISOString()
+    })
+    .eq('id', data.guest_id);
 
-  // In production, this would be an API call to:
-  // 1. Update the VIP's is_attending status
-  // 2. Insert new records for additional guests
-  console.log('RSVP Submission:', data);
+  if (updateError) {
+    console.error('Error updating guest:', updateError);
+    return { success: false, message: 'Failed to update RSVP. Please try again.' };
+  }
+
+  // Insert additional guests if attending and has additional guests
+  if (data.is_attending && data.additional_guests.length > 0) {
+    const additionalGuestsData = data.additional_guests.map((name) => ({
+      full_name: name,
+      is_vip: false,
+      is_attending: true,
+      parent_id: data.guest_id,
+      additionals: 0,
+    }));
+
+    const { error: insertError } = await supabase
+      .from('guests')
+      .insert(additionalGuestsData);
+
+    if (insertError) {
+      console.error('Error inserting additional guests:', insertError);
+      return { success: false, message: 'Failed to add additional guests. Please try again.' };
+    }
+  }
 
   return { success: true, message: 'Your RSVP has been recorded!' };
 }
