@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-wedding-cream text-wedding-charcoal antialiased;
+  }
+
+  /* Custom selection color */
+  ::selection {
+    @apply bg-wedding-primary-200 text-wedding-primary-900;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-wedding-primary-500;
+  }
+}
+
+/* Component layer styles */
+@layer components {
+  /* Section container */
+  .section-container {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+
+  /* Section spacing */
+  .section-spacing {
+    @apply py-section-mobile md:py-section;
+  }
+
+  /* Elegant heading styles */
+  .heading-display {
+    @apply font-display text-display-sm md:text-display-md lg:text-display-lg;
+    @apply text-wedding-charcoal tracking-tight;
+  }
+
+  .heading-section {
+    @apply font-display text-2xl md:text-3xl lg:text-4xl;
+    @apply text-wedding-charcoal tracking-tight;
+  }
+
+  .heading-subsection {
+    @apply font-display text-xl md:text-2xl;
+    @apply text-wedding-charcoal;
+  }
+
+  /* Body text styles */
+  .text-body {
+    @apply font-body text-base md:text-lg;
+    @apply text-wedding-secondary-700 leading-relaxed;
+  }
+
+  .text-body-sm {
+    @apply font-body text-sm md:text-base;
+    @apply text-wedding-secondary-600 leading-relaxed;
+  }
+
+  /* Decorative divider */
+  .divider-ornament {
+    @apply flex items-center justify-center gap-4 my-6 md:my-8;
+  }
+
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    @apply h-px w-12 md:w-24 bg-wedding-primary-300;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-lg shadow-sm;
+    @apply border border-wedding-primary-100;
+    @apply transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply shadow-md;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center;
+    @apply px-6 py-3 rounded-md font-body font-medium;
+    @apply transition-all duration-300;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-wedding-primary-500 text-white;
+    @apply hover:bg-wedding-primary-600;
+    @apply focus-visible:ring-wedding-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-wedding-secondary-500 text-white;
+    @apply hover:bg-wedding-secondary-600;
+    @apply focus-visible:ring-wedding-secondary-500;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-wedding-primary-500 text-wedding-primary-600;
+    @apply hover:bg-wedding-primary-50;
+    @apply focus-visible:ring-wedding-primary-500;
+  }
+
+  /* Form input styles */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-md;
+    @apply border border-wedding-primary-200;
+    @apply bg-white text-wedding-charcoal;
+    @apply placeholder:text-wedding-secondary-400;
+    @apply transition-all duration-300;
+    @apply focus:outline-none focus:border-wedding-primary-400 focus:ring-2 focus:ring-wedding-primary-100;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-wedding-secondary-700 mb-2;
+  }
+
+  /* Subtle animation classes */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-4;
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .animate-on-scroll.visible {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+/* Utility layer */
+@layer utilities {
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient overlays */
+  .gradient-overlay {
+    @apply bg-gradient-to-b from-black/40 via-black/20 to-black/60;
+  }
+
+  .gradient-overlay-light {
+    @apply bg-gradient-to-b from-white/80 via-white/40 to-white/80;
+  }
+
+  /* Aspect ratios for images */
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-landscape {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
