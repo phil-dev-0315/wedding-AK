@@ -31,7 +31,7 @@ async function searchGuests(query: string): Promise<Guest[]> {
     throw new Error('Failed to search guests');
   }
 
-  return data || [];
+  return (data as Guest[]) || [];
 }
 
 // Submit RSVP to Supabase

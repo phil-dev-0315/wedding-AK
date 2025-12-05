@@ -78,7 +78,7 @@ export function getTimeRemaining(targetDate: string): TimeRemaining {
 /**
  * Debounce function for search inputs
  */
-export function debounce<T extends (...args: unknown[]) => unknown>(
+export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
