@@ -9,7 +9,7 @@ export const weddingConfig = {
   // Couple Information
   couple: {
     names: process.env.NEXT_PUBLIC_COUPLE_NAMES || 'Partner One & Partner Two',
-    hashtag: '#CoupleNameWedding2025',
+    hashtag: '#AbiAndKingsWedding2026',
   },
 
   // Wedding Date & Time
@@ -33,7 +33,7 @@ export const weddingConfig = {
 
   // Footer
   footer: {
-    message: 'Thank you for being part of our story. We can\'t wait to celebrate with you!',
+    message: 'We are incredibly excited to share this momentous occasion with all of our beloved friends and family.\n\nAs we embark on this beautiful new chapter, we praise God for His loving hand that has guided us and united our hearts. Your presence on our special day would truly be the greatest gift as we celebrate the sacred bond He has created. We can\'t wait to celebrate, laugh, and make unforgettable memories with each of you!',
   },
 
   // Navigation

@@ -8,46 +8,46 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // Wedding theme colors - easily customizable
+      // Wedding theme colors - elegant white and blue
       colors: {
         wedding: {
-          // Primary colors
+          // Primary colors - elegant blue
           primary: {
-            50: '#fdf8f6',
-            100: '#f9ebe5',
-            200: '#f3d5c8',
-            300: '#e9b8a3',
-            400: '#dc9478',
-            500: '#c97856',  // Main primary
-            600: '#b5623f',
-            700: '#974f34',
-            800: '#7c432f',
-            900: '#673a2b',
-            950: '#381c14',
+            50: '#f0f7ff',
+            100: '#e0efff',
+            200: '#baddff',
+            300: '#7cc2ff',
+            400: '#36a3ff',
+            500: '#0c84eb',  // Main primary - elegant blue
+            600: '#0068c9',
+            700: '#0053a3',
+            800: '#004686',
+            900: '#003b6f',
+            950: '#00254a',
           },
-          // Secondary/accent colors
+          // Secondary/accent colors - soft slate blue
           secondary: {
-            50: '#f6f7f6',
-            100: '#e3e5e2',
-            200: '#c6ccc4',
-            300: '#a2ab9f',
-            400: '#7d897a',
-            500: '#626e5f',  // Main secondary
-            600: '#4d574b',
-            700: '#40473e',
-            800: '#353b34',
-            900: '#2e322d',
-            950: '#181b18',
+            50: '#f8fafc',
+            100: '#f1f5f9',
+            200: '#e2e8f0',
+            300: '#cbd5e1',
+            400: '#94a3b8',
+            500: '#64748b',  // Main secondary
+            600: '#475569',
+            700: '#334155',
+            800: '#1e293b',
+            900: '#0f172a',
+            950: '#020617',
           },
           // Neutral/background colors
-          cream: '#faf9f7',
-          ivory: '#fffff0',
-          champagne: '#f7e7ce',
-          blush: '#fce4db',
-          sage: '#9dc183',
-          dustyrose: '#d4a5a5',
-          gold: '#d4af37',
-          charcoal: '#36454f',
+          cream: '#fafbfc',
+          ivory: '#ffffff',
+          champagne: '#f8fafc',
+          blush: '#e0efff',
+          sage: '#7cc2ff',
+          dustyrose: '#baddff',
+          gold: '#0c84eb',
+          charcoal: '#1e293b',
         },
       },
       fontFamily: {

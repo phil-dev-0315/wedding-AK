@@ -21,19 +21,19 @@ export function Footer({
   weddingDate = '2025-06-15',
   message = 'Thank you for being part of our story. We can\'t wait to celebrate with you!',
   socialLinks,
-  hashtag = '#CoupleNameWedding2025',
+  hashtag = `#AbiAndKingsWedding2026`,
 }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
     <footer id="footer" className="bg-wedding-charcoal text-white">
       {/* Thank You Section */}
-      <Section variant="default" className="bg-wedding-charcoal py-16 md:py-20">
+      <Section variant="default" className="bg-wedding-secondary-900 py-16 md:py-20">
         <Container size="md">
           <div className="text-center">
             {/* Decorative element */}
             <div className="mb-6">
-              <span className="text-wedding-primary-300 text-2xl">♥</span>
+              <span className="text-wedding-primary-400 text-2xl">♥</span>
             </div>
 
             {/* Thank you message */}
@@ -41,20 +41,20 @@ export function Footer({
               Thank You
             </h2>
 
-            <p className="text-lg text-white/80 max-w-xl mx-auto mb-8">
+            <p className="text-lg text-wedding-secondary-200 max-w-xl mx-auto mb-8">
               {message}
             </p>
 
             {/* Couple names */}
-            <p className="font-display text-2xl text-wedding-primary-300">
+            <p className="font-display text-2xl text-wedding-primary-400">
               {coupleNames}
             </p>
 
             {/* Hashtag */}
             {hashtag && (
-              <p className="mt-6 text-white/60 text-sm font-body">
+              <p className="mt-6 text-wedding-secondary-300 text-sm font-body">
                 Share your photos with us using{' '}
-                <span className="text-wedding-primary-300 font-medium">{hashtag}</span>
+                <span className="text-wedding-primary-400 font-medium">{hashtag}</span>
               </p>
             )}
 
@@ -96,14 +96,14 @@ export function Footer({
       </Section>
 
       {/* Copyright Section */}
-      <div className="border-t border-white/10 py-6">
+      <div className="border-t border-wedding-secondary-700 py-6">
         <Container>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/50">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-wedding-secondary-300">
             <p>
               © {year} {coupleNames}. All rights reserved.
             </p>
             <p>
-              Made with ♥
+              Made with <span className="text-wedding-primary-400">♥</span>
             </p>
           </div>
         </Container>
@@ -127,7 +127,7 @@ function SocialLink({ href, label, children }: SocialLinkProps) {
       className={cn(
         'w-10 h-10 rounded-full',
         'flex items-center justify-center',
-        'bg-white/10 text-white/70',
+        'bg-wedding-secondary-700 text-wedding-secondary-300',
         'hover:bg-wedding-primary-500 hover:text-white',
         'transition-all duration-300'
       )}

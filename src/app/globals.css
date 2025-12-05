@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply bg-wedding-cream text-wedding-charcoal antialiased;
+    @apply bg-white text-wedding-charcoal antialiased;
   }
 
   /* Custom selection color */

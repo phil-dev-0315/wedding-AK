@@ -12,8 +12,8 @@ interface HeroProps {
 }
 
 export function Hero({
-  coupleNames = 'Partner One & Partner Two',
-  weddingDate = '2025-06-15T15:00:00',
+  coupleNames = 'Abigail & Kings Lee',
+  weddingDate = '2026-03-07T15:00:00',
   tagline = 'We\'re getting married!',
   backgroundImage,
 }: HeroProps) {
@@ -56,8 +56,8 @@ export function Hero({
             <div className="absolute inset-0 gradient-overlay" />
           </>
         ) : (
-          /* Default elegant gradient background */
-          <div className="absolute inset-0 bg-gradient-to-br from-wedding-primary-100 via-wedding-cream to-wedding-secondary-100" />
+          /* Default elegant white and blue gradient background */
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-wedding-primary-50 to-wedding-primary-100" />
         )}
       </div>
 

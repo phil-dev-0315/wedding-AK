@@ -6,15 +6,15 @@ import type { WeddingTheme, WeddingRule, ColorSwatch } from '@/types';
 
 // Default placeholder data
 const defaultTheme: WeddingTheme = {
-  name: 'Rustic Elegance',
-  description: 'A blend of natural warmth and timeless sophistication, featuring earthy tones and romantic florals.',
+  name: 'Classic Blue & White',
+  description: 'A timeless celebration of elegance and sophistication, featuring crisp whites and beautiful shades of blue.',
   colors: [
-    { name: 'Champagne', hex: '#f7e7ce', description: 'Primary' },
-    { name: 'Dusty Rose', hex: '#d4a5a5', description: 'Accent' },
-    { name: 'Sage Green', hex: '#9dc183', description: 'Secondary' },
-    { name: 'Warm Taupe', hex: '#a89984', description: 'Neutral' },
-    { name: 'Ivory', hex: '#fffff0', description: 'Background' },
-    { name: 'Charcoal', hex: '#36454f', description: 'Text' },
+    { name: 'Sapphire', hex: '#0c84eb', description: 'Primary' },
+    { name: 'Sky Blue', hex: '#7cc2ff', description: 'Accent' },
+    { name: 'Powder Blue', hex: '#baddff', description: 'Secondary' },
+    { name: 'Soft Gray', hex: '#94a3b8', description: 'Neutral' },
+    { name: 'Pure White', hex: '#ffffff', description: 'Background' },
+    { name: 'Navy', hex: '#1e293b', description: 'Text' },
   ],
 };
 
