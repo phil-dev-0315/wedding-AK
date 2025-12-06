@@ -6,11 +6,10 @@ import { Section, SectionHeader, Container } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import type { GalleryImage } from '@/types';
 
-// Placeholder images - replace with actual images or CMS data
 const defaultImages: GalleryImage[] = [
   {
     id: '1',
-    src: '/images/gallery/placeholder-1.jpg',
+    src: '/images/gallery/couple-1.jpg',
     alt: 'Couple photo 1',
     width: 600,
     height: 800,
@@ -18,7 +17,7 @@ const defaultImages: GalleryImage[] = [
   },
   {
     id: '2',
-    src: '/images/gallery/placeholder-2.jpg',
+    src: '/images/gallery/couple-2.png',
     alt: 'Couple photo 2',
     width: 800,
     height: 600,
@@ -26,35 +25,11 @@ const defaultImages: GalleryImage[] = [
   },
   {
     id: '3',
-    src: '/images/gallery/placeholder-3.jpg',
+    src: '/images/gallery/couple-3.jpg',
     alt: 'Couple photo 3',
     width: 600,
     height: 600,
     caption: 'Coffee date',
-  },
-  {
-    id: '4',
-    src: '/images/gallery/placeholder-4.jpg',
-    alt: 'Couple photo 4',
-    width: 800,
-    height: 600,
-    caption: 'Weekend getaway',
-  },
-  {
-    id: '5',
-    src: '/images/gallery/placeholder-5.jpg',
-    alt: 'Couple photo 5',
-    width: 600,
-    height: 800,
-    caption: 'Pre-wedding shoot',
-  },
-  {
-    id: '6',
-    src: '/images/gallery/placeholder-6.jpg',
-    alt: 'Couple photo 6',
-    width: 600,
-    height: 600,
-    caption: 'Adventure together',
   },
 ];
 
@@ -130,16 +105,15 @@ function Lightbox({ image, onClose, onPrev, onNext, hasPrev, hasNext }: Lightbox
         className="relative max-w-4xl max-h-[80vh] w-full"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative aspect-auto bg-wedding-charcoal/50 rounded-lg overflow-hidden">
-          {/* Placeholder div for when images aren't available */}
-          <div className="w-full h-[60vh] flex items-center justify-center bg-wedding-secondary-800 text-white/50">
-            <div className="text-center">
-              <svg className="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <p className="text-sm">{image.alt}</p>
-            </div>
-          </div>
+        <div className="relative w-full h-[60vh] bg-wedding-charcoal/50 rounded-lg overflow-hidden">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className="object-contain"
+            sizes="(max-width: 1024px) 100vw, 80vw"
+            priority
+          />
         </div>
         {image.caption && (
           <p className="mt-4 text-center text-white/80 text-sm">{image.caption}</p>
@@ -203,23 +177,23 @@ export function Gallery({
                 'group cursor-pointer',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-wedding-primary-500 focus-visible:ring-offset-2',
                 'transition-all duration-300',
-                // Vary heights for visual interest
-                index % 5 === 0 && 'row-span-2',
-                index % 7 === 0 && 'md:col-span-2'
+                // First image spans 2 rows for visual interest
+                index === 0 && 'row-span-2'
               )}
               aria-label={`View ${image.alt}`}
             >
-              {/* Placeholder image container */}
+              {/* Image container */}
               <div className={cn(
-                'w-full',
-                index % 5 === 0 ? 'aspect-[3/4]' : 'aspect-square'
+                'w-full relative',
+                index === 0 ? 'aspect-[3/4]' : 'aspect-square'
               )}>
-                {/* Placeholder background */}
-                <div className="absolute inset-0 bg-wedding-secondary-200 flex items-center justify-center">
-                  <svg className="w-12 h-12 text-wedding-secondary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">

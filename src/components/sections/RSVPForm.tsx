@@ -34,6 +34,22 @@ async function searchGuests(query: string): Promise<Guest[]> {
   return (data as Guest[]) || [];
 }
 
+// Fetch additional guests for a VIP
+async function fetchAdditionalGuests(parentId: number): Promise<Guest[]> {
+  const { data, error } = await supabase
+    .from('guests')
+    .select('*')
+    .eq('parent_id', parentId)
+    .eq('is_attending', true);
+
+  if (error) {
+    console.error('Error fetching additional guests:', error);
+    return [];
+  }
+
+  return (data as Guest[]) || [];
+}
+
 // Submit RSVP to Supabase
 async function submitRSVP(data: RSVPFormData): Promise<{ success: boolean; message: string }> {
   // Update the VIP's attendance status
@@ -84,6 +100,7 @@ export function RSVPForm({
   const [selectedGuest, setSelectedGuest] = useState<Guest | null>(null);
   const [isAttending, setIsAttending] = useState<boolean | null>(null);
   const [additionalGuests, setAdditionalGuests] = useState<string[]>([]);
+  const [previousAdditionalGuests, setPreviousAdditionalGuests] = useState<Guest[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -119,11 +136,18 @@ export function RSVPForm({
   };
 
   // Handle guest selection
-  const handleSelectGuest = (guest: Guest) => {
+  const handleSelectGuest = async (guest: Guest) => {
     setSelectedGuest(guest);
 
     // Check if already responded
     if (guest.is_attending !== null) {
+      // Fetch additional guests if attending
+      if (guest.is_attending) {
+        const additionals = await fetchAdditionalGuests(guest.id);
+        setPreviousAdditionalGuests(additionals);
+      } else {
+        setPreviousAdditionalGuests([]);
+      }
       setStep('already-responded');
     } else {
       setStep('attendance');
@@ -196,6 +220,7 @@ export function RSVPForm({
     setSelectedGuest(null);
     setIsAttending(null);
     setAdditionalGuests([]);
+    setPreviousAdditionalGuests([]);
     setError(null);
   };
 
@@ -450,10 +475,19 @@ export function RSVPForm({
             {/* Already Responded */}
             {step === 'already-responded' && selectedGuest && (
               <div className="text-center space-y-6">
-                <div className="w-16 h-16 mx-auto rounded-full bg-wedding-primary-100 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-wedding-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div className={cn(
+                  'w-16 h-16 mx-auto rounded-full flex items-center justify-center',
+                  selectedGuest.is_attending ? 'bg-green-100' : 'bg-wedding-primary-100'
+                )}>
+                  {selectedGuest.is_attending ? (
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg className="w-8 h-8 text-wedding-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
                 </div>
 
                 <div>
@@ -463,12 +497,38 @@ export function RSVPForm({
                   <p className="text-wedding-secondary-600">
                     Hi {selectedGuest.full_name}, you&apos;ve already submitted your RSVP.
                   </p>
-                  <p className="text-sm text-wedding-secondary-500 mt-2">
-                    {selectedGuest.is_attending
-                      ? 'We look forward to seeing you!'
-                      : 'We\'re sorry you can\'t make it.'}
-                  </p>
+                  <div className={cn(
+                    'inline-block mt-3 px-4 py-2 rounded-full text-sm font-medium',
+                    selectedGuest.is_attending
+                      ? 'bg-green-100 text-green-700'
+                      : 'bg-red-100 text-red-700'
+                  )}>
+                    {selectedGuest.is_attending ? 'Attending' : 'Not Attending'}
+                  </div>
                 </div>
+
+                {selectedGuest.is_attending && (
+                  <div className="p-4 bg-wedding-primary-50 rounded-md text-left">
+                    <p className="text-sm font-medium text-wedding-secondary-700 mb-2">Your party:</p>
+                    <ul className="text-sm text-wedding-charcoal space-y-1">
+                      <li className="flex items-center gap-2">
+                        <span className="text-wedding-primary-500">•</span>
+                        {selectedGuest.full_name}
+                      </li>
+                      {previousAdditionalGuests.map((guest) => (
+                        <li key={guest.id} className="flex items-center gap-2">
+                          <span className="text-wedding-primary-500">•</span>
+                          {guest.full_name}
+                        </li>
+                      ))}
+                    </ul>
+                    {previousAdditionalGuests.length === 0 && selectedGuest.additionals > 0 && (
+                      <p className="text-xs text-wedding-secondary-500 mt-2">
+                        No additional guests registered.
+                      </p>
+                    )}
+                  </div>
+                )}
 
                 <p className="text-sm text-wedding-secondary-500">
                   If you need to make changes, please contact us directly.

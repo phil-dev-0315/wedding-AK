@@ -20,7 +20,7 @@ export const weddingConfig = {
 
   // Hero Section
   hero: {
-    backgroundImage: '', // Add path to background image, e.g., '/images/hero-bg.jpg'
+    backgroundImage: '/images/hero/hero-section.jpg', // Add path to background image, e.g., '/images/hero-bg.jpg'
   },
 
   // Social Links (optional)
