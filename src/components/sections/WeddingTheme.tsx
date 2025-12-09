@@ -47,7 +47,7 @@ const defaultRules: WeddingRule[] = [
   {
     icon: 'hashtag',
     title: 'Share the Love',
-    description: 'After the ceremony, share your photos using our wedding hashtag: #CoupleNameWedding2025',
+    description: 'After the ceremony, share your photos using our wedding hashtag: #AbiTheOneForKings2026',
   },
 ];
 

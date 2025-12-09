@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Section, SectionHeader, Container, Card, CardContent } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import type { WeddingEvent } from '@/types';
@@ -10,32 +11,24 @@ const defaultEvents: WeddingEvent[] = [
   {
     id: '1',
     title: 'Wedding Ceremony',
-    date: '2025-06-15',
-    time: '3:00 PM',
-    venue: 'St. Mary\'s Chapel',
-    address: '123 Church Street, City, State 12345',
+    date: '2026-03-07',
+    time: '2:00 PM',
+    venue: 'Shrine of Saint Francis of Assisi',
+    address: 'San Manuel, Tarlac City, Tarlac',
     dressCode: 'Formal Attire',
     description: 'Join us as we exchange our vows in an intimate ceremony.',
+    image: '/images/venues/church.jpg',
   },
   {
     id: '2',
-    title: 'Cocktail Hour',
-    date: '2025-06-15',
-    time: '4:30 PM',
-    venue: 'Garden Terrace',
-    address: 'Same venue',
-    dressCode: 'Formal Attire',
-    description: 'Light refreshments and drinks while we take photos.',
-  },
-  {
-    id: '3',
     title: 'Reception & Dinner',
-    date: '2025-06-15',
-    time: '6:00 PM',
-    venue: 'Grand Ballroom',
-    address: '456 Celebration Ave, City, State 12345',
+    date: '2026-03-07',
+    time: '4:00 PM',
+    venue: 'Casa Alva',
+    address: 'San Jose, Tarlac City, Tarlac',
     dressCode: 'Formal Attire',
     description: 'Dinner, dancing, and celebration with family and friends.',
+    image: '/images/venues/reception.jpg',
   },
 ];
 
@@ -73,12 +66,35 @@ function EventCard({ event, index, isExpanded, onToggle }: EventCardProps) {
       <div className={cn('md:col-span-1', isLeft ? 'md:col-start-1' : 'md:col-start-2')}>
         <Card
           className={cn(
-            'cursor-pointer',
+            'cursor-pointer overflow-hidden',
             'hover:shadow-md hover:border-wedding-primary-200',
             'transition-all duration-300'
           )}
           onClick={onToggle}
         >
+          {/* Venue Image */}
+          <div className="relative w-full h-40 bg-wedding-secondary-100">
+            {event.image ? (
+              <>
+                <Image
+                  src={event.image}
+                  alt={event.venue}
+                  fill
+                  className="object-cover z-10"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-20" />
+              </>
+            ) : (
+              /* Placeholder - shown when no image */
+              <div className="absolute inset-0 flex items-center justify-center bg-wedding-secondary-100">
+                <svg className="w-12 h-12 text-wedding-secondary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+            )}
+          </div>
+
           <CardContent className="p-4 sm:p-6">
             {/* Event header */}
             <div className="flex items-start justify-between gap-4">

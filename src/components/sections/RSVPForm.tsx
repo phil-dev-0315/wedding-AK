@@ -36,11 +36,14 @@ async function searchGuests(query: string): Promise<Guest[]> {
 
 // Fetch additional guests for a VIP
 async function fetchAdditionalGuests(parentId: number): Promise<Guest[]> {
+  console.log('Fetching additional guests for parent_id:', parentId, typeof parentId);
+
   const { data, error } = await supabase
     .from('guests')
     .select('*')
-    .eq('parent_id', parentId)
-    .eq('is_attending', true);
+    .eq('parent_id', parentId);
+
+  console.log('Fetch result - data:', data, 'error:', error);
 
   if (error) {
     console.error('Error fetching additional guests:', error);
@@ -138,12 +141,15 @@ export function RSVPForm({
   // Handle guest selection
   const handleSelectGuest = async (guest: Guest) => {
     setSelectedGuest(guest);
+    console.log('Selected guest:', guest);
 
     // Check if already responded
     if (guest.is_attending !== null) {
       // Fetch additional guests if attending
       if (guest.is_attending) {
+        console.log('Guest is attending, fetching additionals for id:', guest.id);
         const additionals = await fetchAdditionalGuests(guest.id);
+        console.log('Setting previousAdditionalGuests:', additionals);
         setPreviousAdditionalGuests(additionals);
       } else {
         setPreviousAdditionalGuests([]);

@@ -3,6 +3,7 @@ import {
   Hero,
   Countdown,
   Schedule,
+  GettingThere,
   Gallery,
   Entourage,
   WeddingThemeSection,
@@ -30,6 +31,9 @@ export default function Home() {
 
       {/* Event Schedule */}
       <Schedule />
+
+      {/* Getting There - Route Map */}
+      <GettingThere />
 
       {/* Photo Gallery */}
       <Gallery />

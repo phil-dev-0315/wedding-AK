@@ -1,6 +1,7 @@
 export { Hero } from './Hero';
 export { Countdown } from './Countdown';
 export { Schedule } from './Schedule';
+export { GettingThere } from './GettingThere';
 export { Gallery } from './Gallery';
 export { Entourage } from './Entourage';
 export { WeddingThemeSection } from './WeddingTheme';

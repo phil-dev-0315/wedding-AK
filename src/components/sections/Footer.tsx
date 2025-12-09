@@ -18,10 +18,10 @@ interface FooterProps {
 
 export function Footer({
   coupleNames = 'Partner One & Partner Two',
-  weddingDate = '2025-06-15',
+  weddingDate = '2026-03-07',
   message = 'Thank you for being part of our story. We can\'t wait to celebrate with you!',
   socialLinks,
-  hashtag = `#AbiAndKingsWedding2026`,
+  hashtag = `#CoupleNameWedding2025`,
 }: FooterProps) {
   const year = new Date().getFullYear();
 

@@ -77,31 +77,20 @@ interface MemberCardProps {
 
 function MemberCard({ member }: MemberCardProps) {
   return (
-    <div className="flex flex-col items-center text-center">
-      {/* Photo placeholder */}
-      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-wedding-secondary-100 overflow-hidden mb-3 flex items-center justify-center">
-        {member.image ? (
-          <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${member.image})` }} />
-        ) : (
-          <svg className="w-10 h-10 text-wedding-secondary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-        )}
-      </div>
-
+    <div className="flex flex-col items-center text-center py-2">
       {/* Name */}
-      <h4 className="font-display text-base sm:text-lg font-medium text-wedding-charcoal">
+      <h4 className="font-display text-sm font-medium text-wedding-charcoal leading-tight">
         {member.name}
       </h4>
 
       {/* Role */}
-      <p className="text-xs sm:text-sm text-wedding-primary-600 font-medium uppercase tracking-wide">
+      <p className="text-[10px] text-wedding-primary-600 font-medium uppercase tracking-wide mt-0.5">
         {member.role}
       </p>
 
       {/* Relationship (optional) */}
       {member.relationship && (
-        <p className="text-xs text-wedding-secondary-500 mt-1">
+        <p className="text-[10px] text-wedding-secondary-500 mt-0.5">
           {member.relationship}
         </p>
       )}
@@ -116,23 +105,21 @@ interface GroupSectionProps {
 }
 
 function GroupSection({ group, isExpanded, onToggle }: GroupSectionProps) {
-  const isManyMembers = group.members.length > 4;
-
   return (
     <Card className="mb-4 last:mb-0">
       <button
         onClick={onToggle}
-        className="w-full px-4 sm:px-6 py-4 flex items-center justify-between text-left hover:bg-wedding-primary-50/50 transition-colors rounded-t-lg"
+        className="w-full px-4 sm:px-6 py-3 flex items-center justify-between text-left hover:bg-wedding-primary-50/50 transition-colors rounded-t-lg"
         aria-expanded={isExpanded}
       >
-        <h3 className="heading-subsection text-lg sm:text-xl">{group.title}</h3>
+        <h3 className="heading-subsection text-base sm:text-lg">{group.title}</h3>
         <span className="flex items-center gap-2">
-          <span className="text-sm text-wedding-secondary-500">
+          <span className="text-xs text-wedding-secondary-500">
             {group.members.length} {group.members.length === 1 ? 'person' : 'people'}
           </span>
           <svg
             className={cn(
-              'w-5 h-5 text-wedding-primary-500 transition-transform duration-300',
+              'w-4 h-4 text-wedding-primary-500 transition-transform duration-300',
               isExpanded && 'rotate-180'
             )}
             fill="none"
@@ -150,13 +137,8 @@ function GroupSection({ group, isExpanded, onToggle }: GroupSectionProps) {
           isExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
         )}
       >
-        <CardContent className="pt-0 pb-6">
-          <div className={cn(
-            'grid gap-6',
-            isManyMembers
-              ? 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6'
-              : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4'
-          )}>
+        <CardContent className="pt-0 pb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {group.members.map((member) => (
               <MemberCard key={member.id} member={member} />
             ))}

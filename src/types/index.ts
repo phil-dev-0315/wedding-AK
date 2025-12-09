@@ -32,6 +32,7 @@ export interface WeddingEvent {
   dressCode?: string;
   description?: string;
   mapUrl?: string;
+  image?: string;
 }
 
 // Gallery Types
