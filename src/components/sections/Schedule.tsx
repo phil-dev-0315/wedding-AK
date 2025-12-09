@@ -36,6 +36,7 @@ interface ScheduleProps {
   events?: WeddingEvent[];
   title?: string;
   subtitle?: string;
+  timelineImage?: string;
 }
 
 interface EventCardProps {
@@ -188,8 +189,10 @@ export function Schedule({
   events = defaultEvents,
   title = 'Wedding Day Schedule',
   subtitle = 'Here\'s what to expect on our special day',
+  timelineImage = '/images/samples/wedding-timeline.jpg',
 }: ScheduleProps) {
   const [expandedId, setExpandedId] = useState<string | null>(events[0]?.id || null);
+  const [showFullTimeline, setShowFullTimeline] = useState(false);
 
   const handleToggle = (id: string) => {
     setExpandedId(expandedId === id ? null : id);
@@ -211,6 +214,53 @@ export function Schedule({
               onToggle={() => handleToggle(event.id)}
             />
           ))}
+        </div>
+
+        {/* Full Timeline Toggle */}
+        <div className="mt-12 flex flex-col items-center">
+          <button
+            onClick={() => setShowFullTimeline(!showFullTimeline)}
+            className={cn(
+              'inline-flex items-center gap-2 px-6 py-3',
+              'text-sm font-medium text-wedding-primary-600',
+              'bg-wedding-primary-50 hover:bg-wedding-primary-100',
+              'rounded-full transition-all duration-300',
+              'border border-wedding-primary-200'
+            )}
+          >
+            <svg
+              className={cn(
+                'w-4 h-4 transition-transform duration-300',
+                showFullTimeline && 'rotate-180'
+              )}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+            {showFullTimeline ? 'Hide Full Timeline' : 'Show Full Timeline Details'}
+          </button>
+
+          {/* Full Timeline Image */}
+          <div
+            className={cn(
+              'overflow-hidden transition-all duration-500 ease-in-out w-full',
+              showFullTimeline ? 'max-h-[2000px] opacity-100 mt-8' : 'max-h-0 opacity-0 mt-0'
+            )}
+          >
+            <div className="flex justify-center">
+              <div className="relative w-full max-w-2xl">
+                <Image
+                  src={timelineImage}
+                  alt="Wedding Day Timeline - Kings Lee & Abigail"
+                  width={800}
+                  height={1200}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </Section>
