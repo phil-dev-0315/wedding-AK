@@ -38,10 +38,10 @@ function TimeBlock({ value, label, delay = 0 }: TimeBlockProps) {
           'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28',
           'flex items-center justify-center',
           'bg-white rounded-lg shadow-sm',
-          'border border-wedding-primary-100'
+          'border border-wedding-tan/30'
         )}
       >
-        <span className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-wedding-charcoal">
+        <span className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-wedding-primary-500">
           {value.toString().padStart(2, '0')}
         </span>
       </div>
@@ -100,12 +100,12 @@ export function Countdown({
         <div className="text-center">
           <h2 className="heading-section mb-2">{title}</h2>
           <div className="divider-ornament mb-8">
-            <span className="text-wedding-primary-400">✦</span>
+            <span className="text-wedding-tan">✦</span>
           </div>
 
           {timeRemaining.isExpired ? (
             <div className="py-8">
-              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-wedding-primary-600">
+              <p className="font-script text-3xl sm:text-4xl md:text-5xl text-wedding-primary-500">
                 {expiredMessage}
               </p>
             </div>
@@ -133,7 +133,7 @@ export function Countdown({
 
 function Separator() {
   return (
-    <span className="hidden sm:block text-2xl md:text-3xl text-wedding-primary-300 font-light -mt-6">
+    <span className="hidden sm:block text-2xl md:text-3xl text-wedding-tan font-light -mt-6">
       :
     </span>
   );

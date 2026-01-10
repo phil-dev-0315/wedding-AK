@@ -26,14 +26,14 @@ export function Footer({
   const year = new Date().getFullYear();
 
   return (
-    <footer id="footer" className="bg-wedding-charcoal text-white">
+    <footer id="footer" className="bg-wedding-primary-900 text-white">
       {/* Thank You Section */}
-      <Section variant="default" className="bg-wedding-secondary-900 py-16 md:py-20">
+      <Section variant="primary" className="bg-wedding-primary-800 py-16 md:py-20">
         <Container size="md">
           <div className="text-center">
             {/* Decorative element */}
             <div className="mb-6">
-              <span className="text-wedding-primary-400 text-2xl">♥</span>
+              <span className="text-wedding-tan text-2xl">♥</span>
             </div>
 
             {/* Thank you message */}
@@ -41,20 +41,20 @@ export function Footer({
               Thank You
             </h2>
 
-            <p className="text-lg text-wedding-secondary-200 max-w-xl mx-auto mb-8">
+            <p className="text-lg text-wedding-rockblue max-w-xl mx-auto mb-8">
               {message}
             </p>
 
             {/* Couple names */}
-            <p className="font-display text-2xl text-wedding-primary-400">
+            <p className="font-display text-2xl text-wedding-tan">
               {coupleNames}
             </p>
 
             {/* Hashtag */}
             {hashtag && (
-              <p className="mt-6 text-wedding-secondary-300 text-sm font-body">
+              <p className="mt-6 text-wedding-rockblue text-sm font-body">
                 Share your photos with us using{' '}
-                <span className="text-wedding-primary-400 font-medium">{hashtag}</span>
+                <span className="text-wedding-tan font-medium">{hashtag}</span>
               </p>
             )}
 
@@ -96,14 +96,14 @@ export function Footer({
       </Section>
 
       {/* Copyright Section */}
-      <div className="border-t border-wedding-secondary-700 py-6">
+      <div className="border-t border-wedding-primary-700 py-6">
         <Container>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-wedding-secondary-300">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-wedding-rockblue">
             <p>
               © {year} {coupleNames}. All rights reserved.
             </p>
             <p>
-              Made with <span className="text-wedding-primary-400">♥</span>
+              Made with <span className="text-wedding-tan">♥</span>
             </p>
           </div>
         </Container>
@@ -127,8 +127,8 @@ function SocialLink({ href, label, children }: SocialLinkProps) {
       className={cn(
         'w-10 h-10 rounded-full',
         'flex items-center justify-center',
-        'bg-wedding-secondary-700 text-wedding-secondary-300',
-        'hover:bg-wedding-primary-500 hover:text-white',
+        'bg-wedding-primary-700 text-wedding-rockblue',
+        'hover:bg-wedding-tan hover:text-wedding-primary-900',
         'transition-all duration-300'
       )}
       aria-label={label}

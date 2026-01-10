@@ -8,46 +8,47 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // Wedding theme colors - elegant white and blue
+      // Wedding theme colors - #323C63, #839891, #9BB2C8, #D2B38F, #FFF5EC
       colors: {
         wedding: {
-          // Primary colors - elegant blue
+          // Primary colors - Calming Dark Blue (#323C63)
           primary: {
-            50: '#f0f7ff',
-            100: '#e0efff',
-            200: '#baddff',
-            300: '#7cc2ff',
-            400: '#36a3ff',
-            500: '#0c84eb',  // Main primary - elegant blue
-            600: '#0068c9',
-            700: '#0053a3',
-            800: '#004686',
-            900: '#003b6f',
-            950: '#00254a',
+            50: '#f2f3f6',
+            100: '#e5e7ed',
+            200: '#c8cdd9',
+            300: '#a8b0c4',
+            400: '#6b7799',
+            500: '#323C63',  // Main primary - Calming Dark Blue
+            600: '#2d3659',
+            700: '#262e4b',
+            800: '#1f263d',
+            900: '#181d2f',
+            950: '#0f1220',
           },
-          // Secondary/accent colors - soft slate blue
+          // Secondary/accent colors - Neutral Blue Gray (#8B9BAC)
           secondary: {
-            50: '#f8fafc',
-            100: '#f1f5f9',
-            200: '#e2e8f0',
-            300: '#cbd5e1',
-            400: '#94a3b8',
-            500: '#64748b',  // Main secondary
-            600: '#475569',
-            700: '#334155',
-            800: '#1e293b',
-            900: '#0f172a',
-            950: '#020617',
+            50: '#f5f6f8',
+            100: '#ebedf1',
+            200: '#d6dbe3',
+            300: '#bcc4d0',
+            400: '#a3aebe',
+            500: '#8B9BAC',  // Main secondary - Neutral Blue Gray
+            600: '#76869a',
+            700: '#626f80',
+            800: '#505a68',
+            900: '#424a55',
+            950: '#2b3038',
           },
           // Neutral/background colors
-          cream: '#fafbfc',
-          ivory: '#ffffff',
-          champagne: '#f8fafc',
-          blush: '#e0efff',
-          sage: '#7cc2ff',
-          dustyrose: '#baddff',
-          gold: '#0c84eb',
-          charcoal: '#1e293b',
+          cream: '#FFF5EC',       // Seashell - main background
+          ivory: '#ffffff',       // Pure white
+          champagne: '#FFF5EC',   // Seashell
+          seashell: '#FFF5EC',    // Seashell
+          tan: '#D2B38F',         // Tan accent
+          rockblue: '#9BB2C8',    // Rock Blue accent
+          bluegray: '#8B9BAC',    // Neutral Blue Gray
+          gold: '#D2B38F',        // Tan as gold alternative
+          charcoal: '#323C63',    // Primary as charcoal
         },
       },
       fontFamily: {

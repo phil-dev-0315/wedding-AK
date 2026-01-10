@@ -6,15 +6,14 @@ import type { WeddingTheme, WeddingRule, ColorSwatch } from '@/types';
 
 // Default placeholder data
 const defaultTheme: WeddingTheme = {
-  name: 'Classic Blue & White',
-  description: 'A timeless celebration of elegance and sophistication, featuring crisp whites and beautiful shades of blue.',
+  name: 'Elegant Blue & Neutral',
+  description: 'A timeless celebration of elegance and romance, featuring calming blues and warm neutral tones.',
   colors: [
-    { name: 'Sapphire', hex: '#0c84eb', description: 'Primary' },
-    { name: 'Sky Blue', hex: '#7cc2ff', description: 'Accent' },
-    { name: 'Powder Blue', hex: '#baddff', description: 'Secondary' },
-    { name: 'Soft Gray', hex: '#94a3b8', description: 'Neutral' },
-    { name: 'Pure White', hex: '#ffffff', description: 'Background' },
-    { name: 'Navy', hex: '#1e293b', description: 'Text' },
+    { name: 'Dark Blue', hex: '#323C63', description: 'Primary' },
+    { name: 'Blue Gray', hex: '#8B9BAC', description: 'Secondary' },
+    { name: 'Rock Blue', hex: '#9BB2C8', description: 'Accent' },
+    { name: 'Tan', hex: '#D2B38F', description: 'Warm Accent' },
+    { name: 'Seashell', hex: '#FFF5EC', description: 'Background' },
   ],
 };
 
@@ -62,13 +61,13 @@ function ColorSwatchDisplay({ color }: { color: ColorSwatch }) {
   return (
     <div className="flex flex-col items-center">
       <div
-        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-sm border border-wedding-secondary-200"
+        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-sm border border-wedding-tan/30"
         style={{ backgroundColor: color.hex }}
         title={color.hex}
       />
       <p className="mt-2 text-sm font-medium text-wedding-charcoal">{color.name}</p>
       {color.description && (
-        <p className="text-xs text-wedding-secondary-500">{color.description}</p>
+        <p className="text-xs text-wedding-secondary-600">{color.description}</p>
       )}
     </div>
   );
@@ -108,7 +107,7 @@ function RuleCard({ rule }: { rule: WeddingRule }) {
     <Card className="h-full">
       <CardContent className="p-5 sm:p-6">
         <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-wedding-primary-100 flex items-center justify-center text-wedding-primary-600">
+          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-wedding-rockblue/20 flex items-center justify-center text-wedding-primary-500">
             <RuleIcon icon={rule.icon} />
           </div>
           <div>
@@ -141,7 +140,7 @@ export function WeddingThemeSection({
           <Card>
             <CardContent className="p-6 sm:p-8">
               <div className="text-center mb-8">
-                <h3 className="font-script text-3xl sm:text-4xl text-wedding-primary-600 mb-2">
+                <h3 className="font-script text-3xl sm:text-4xl text-wedding-primary-500 mb-2">
                   {theme.name}
                 </h3>
                 <p className="text-body-sm max-w-2xl mx-auto">

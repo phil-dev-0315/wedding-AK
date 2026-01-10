@@ -29,7 +29,7 @@ export function Navigation() {
         'fixed top-0 left-0 right-0 z-50',
         'transition-all duration-300',
         isScrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm py-3'
+          ? 'bg-wedding-seashell/95 backdrop-blur-sm shadow-sm py-3'
           : 'bg-transparent py-4'
       )}
     >
@@ -56,7 +56,7 @@ export function Navigation() {
                 className={cn(
                   'text-sm font-body font-medium',
                   'transition-colors duration-300',
-                  'hover:text-wedding-primary-600',
+                  'hover:text-wedding-primary-500',
                   isScrolled ? 'text-wedding-secondary-700' : 'text-wedding-secondary-700'
                 )}
               >
@@ -108,7 +108,7 @@ export function Navigation() {
             isMobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
           )}
         >
-          <div className="py-4 space-y-2 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg">
+          <div className="py-4 space-y-2 bg-wedding-seashell/95 backdrop-blur-sm rounded-lg shadow-lg">
             {weddingConfig.navigation.map((item) => (
               <button
                 key={item.href}
@@ -116,7 +116,7 @@ export function Navigation() {
                 className={cn(
                   'block w-full text-left px-4 py-2',
                   'text-wedding-secondary-700 font-body',
-                  'hover:bg-wedding-primary-50 hover:text-wedding-primary-600',
+                  'hover:bg-wedding-rockblue/10 hover:text-wedding-primary-500',
                   'transition-colors duration-300'
                 )}
               >

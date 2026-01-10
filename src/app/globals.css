@@ -9,12 +9,12 @@
   }
 
   body {
-    @apply bg-white text-wedding-charcoal antialiased;
+    @apply bg-wedding-seashell text-wedding-charcoal antialiased;
   }
 
   /* Custom selection color */
   ::selection {
-    @apply bg-wedding-primary-200 text-wedding-primary-900;
+    @apply bg-wedding-rockblue/30 text-wedding-primary-900;
   }
 
   /* Focus styles for accessibility */
@@ -70,13 +70,13 @@
   .divider-ornament::before,
   .divider-ornament::after {
     content: '';
-    @apply h-px w-12 md:w-24 bg-wedding-primary-300;
+    @apply h-px w-12 md:w-24 bg-wedding-tan;
   }
 
   /* Card styles */
   .card {
     @apply bg-white rounded-lg shadow-sm;
-    @apply border border-wedding-primary-100;
+    @apply border border-wedding-tan/30;
     @apply transition-all duration-300;
   }
 
@@ -105,19 +105,19 @@
   }
 
   .btn-outline {
-    @apply btn border-2 border-wedding-primary-500 text-wedding-primary-600;
-    @apply hover:bg-wedding-primary-50;
+    @apply btn border-2 border-wedding-primary-500 text-wedding-primary-500;
+    @apply hover:bg-wedding-primary-500 hover:text-white;
     @apply focus-visible:ring-wedding-primary-500;
   }
 
   /* Form input styles */
   .form-input {
     @apply w-full px-4 py-3 rounded-md;
-    @apply border border-wedding-primary-200;
+    @apply border border-wedding-tan/50;
     @apply bg-white text-wedding-charcoal;
     @apply placeholder:text-wedding-secondary-400;
     @apply transition-all duration-300;
-    @apply focus:outline-none focus:border-wedding-primary-400 focus:ring-2 focus:ring-wedding-primary-100;
+    @apply focus:outline-none focus:border-wedding-primary-400 focus:ring-2 focus:ring-wedding-rockblue/20;
   }
 
   .form-label {
@@ -144,11 +144,11 @@
 
   /* Gradient overlays */
   .gradient-overlay {
-    @apply bg-gradient-to-b from-black/40 via-black/20 to-black/60;
+    @apply bg-gradient-to-b from-wedding-primary-900/60 via-wedding-primary-800/40 to-wedding-primary-900/70;
   }
 
   .gradient-overlay-light {
-    @apply bg-gradient-to-b from-white/80 via-white/40 to-white/80;
+    @apply bg-gradient-to-b from-wedding-seashell/90 via-wedding-seashell/60 to-wedding-seashell/90;
   }
 
   /* Aspect ratios for images */

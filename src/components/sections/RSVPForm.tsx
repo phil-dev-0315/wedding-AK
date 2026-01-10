@@ -107,6 +107,8 @@ export function RSVPForm({
   const [isLoading, setIsLoading] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [cameFromAlreadyResponded, setCameFromAlreadyResponded] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   // Debounced search function
   const debouncedSearch = useCallback(
@@ -174,6 +176,17 @@ export function RSVPForm({
     }
   };
 
+  // Handle adding guests for already responded users
+  const handleAddGuestsFromAlreadyResponded = () => {
+    if (selectedGuest && selectedGuest.additionals > 0) {
+      setIsAttending(true);
+      setAdditionalGuests(new Array(selectedGuest.additionals).fill(''));
+      setCameFromAlreadyResponded(true);
+      setShowSuccessMessage(false);
+      setStep('additionals');
+    }
+  };
+
   // Handle additional guest name change
   const handleAdditionalGuestChange = (index: number, name: string) => {
     setAdditionalGuests((prev) => {
@@ -200,7 +213,19 @@ export function RSVPForm({
       const result = await submitRSVP(data);
 
       if (result.success) {
-        setStep('confirmation');
+        // If came from already-responded, refetch guests and show updated already-responded page
+        if (cameFromAlreadyResponded) {
+          const updatedAdditionals = await fetchAdditionalGuests(selectedGuest.id);
+          setPreviousAdditionalGuests(updatedAdditionals);
+          setCameFromAlreadyResponded(false);
+          setAdditionalGuests([]);
+          setShowSuccessMessage(true);
+          setStep('already-responded');
+          // Clear success message after 5 seconds
+          setTimeout(() => setShowSuccessMessage(false), 5000);
+        } else {
+          setStep('confirmation');
+        }
       } else {
         setError(result.message);
       }
@@ -227,6 +252,8 @@ export function RSVPForm({
     setIsAttending(null);
     setAdditionalGuests([]);
     setPreviousAdditionalGuests([]);
+    setCameFromAlreadyResponded(false);
+    setShowSuccessMessage(false);
     setError(null);
   };
 
@@ -241,8 +268,14 @@ export function RSVPForm({
         setSelectedGuest(null);
         break;
       case 'additionals':
-        setStep('attendance');
-        setIsAttending(null);
+        if (cameFromAlreadyResponded) {
+          setStep('already-responded');
+          setCameFromAlreadyResponded(false);
+          setAdditionalGuests([]);
+        } else {
+          setStep('attendance');
+          setIsAttending(null);
+        }
         break;
       default:
         break;
@@ -481,6 +514,15 @@ export function RSVPForm({
             {/* Already Responded */}
             {step === 'already-responded' && selectedGuest && (
               <div className="text-center space-y-6">
+                {/* Success message for adding guests */}
+                {showSuccessMessage && (
+                  <div className="p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p className="text-green-700 text-sm font-medium">
+                      Additional guests added successfully!
+                    </p>
+                  </div>
+                )}
+
                 <div className={cn(
                   'w-16 h-16 mx-auto rounded-full flex items-center justify-center',
                   selectedGuest.is_attending ? 'bg-green-100' : 'bg-wedding-primary-100'
@@ -536,9 +578,18 @@ export function RSVPForm({
                   </div>
                 )}
 
-                <p className="text-sm text-wedding-secondary-500">
-                  If you need to make changes, please contact us directly.
-                </p>
+                {/* Show button to add guests if attending and has available slots but no guests added yet */}
+                {selectedGuest.is_attending && selectedGuest.additionals > 0 && previousAdditionalGuests.length === 0 && (
+                  <Button onClick={handleAddGuestsFromAlreadyResponded} variant="primary">
+                    Add Additional Guests
+                  </Button>
+                )}
+
+                {(!selectedGuest.is_attending || previousAdditionalGuests.length > 0 || selectedGuest.additionals === 0) && (
+                  <p className="text-sm text-wedding-secondary-500">
+                    If you need to make changes, please contact us directly.
+                  </p>
+                )}
 
                 <Button onClick={handleReset} variant="outline">
                   Search for another guest

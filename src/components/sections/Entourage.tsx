@@ -8,59 +8,85 @@ import type { EntourageGroup, EntourageMember } from '@/types';
 // Default placeholder data
 const defaultEntourageGroups: EntourageGroup[] = [
   {
+    id: 'parents-bride',
+    title: 'Parents of the Bride',
+    members: [
+      { id: '1', name: 'Javier P. Montoya', role: 'Father of the Bride', relationship: '' },
+      { id: '2', name: 'Lolita A. Montoya', role: 'Mother of the Bride', relationship: '' },
+    ],
+  },
+  {
+    id: 'parents-groom',
+    title: 'Parents of the Groom',
+    members: [
+      { id: '3', name: 'Carlos L. Magday', role: 'Father of the Groom', relationship: '' },
+      { id: '4', name: 'Lolita M. Magday', role: 'Mother of the Groom', relationship: '' },
+    ],
+  },
+  {
     id: 'principal-sponsors',
     title: 'Principal Sponsors',
     members: [
-      { id: '1', name: 'Mr. & Mrs. Sponsor One', role: 'Ninong & Ninang', relationship: 'Family friends' },
-      { id: '2', name: 'Mr. & Mrs. Sponsor Two', role: 'Ninong & Ninang', relationship: 'Parents\' colleagues' },
-      { id: '3', name: 'Mr. & Mrs. Sponsor Three', role: 'Ninong & Ninang', relationship: 'Godparents' },
+      { id: '5', name: 'Mr. Roy P. Acosta', role: 'Ninong', relationship: '' },
+      { id: '6', name: 'Mrs. Fe V. Acosta', role: 'Ninang', relationship: '' },
+      { id: '7', name: 'Engr. Renato Z. Martinez', role: 'Ninong', relationship: '' },
+      { id: '8', name: 'Dr. Joanne Marie I. Escalona', role: 'Ninang', relationship: '' },
+      { id: '9', name: 'Dr. Ricky C. Junio', role: 'Ninong', relationship: '' },
+      { id: '10', name: 'Mrs. Cheer A. De Ala', role: 'Ninang', relationship: '' },
+      { id: '11', name: 'Augusto Ballesteros', role: 'Ninong', relationship: '' },
+      { id: '12', name: 'Mrs. Arlene M. Pineda', role: 'Ninang', relationship: '' },
+      { id: '13', name: 'Engr. Hermon G. Ines', role: 'Ninong', relationship: '' },
+      { id: '14', name: 'Dr. Glenda L. Constantino', role: 'Ninang', relationship: '' },
+      { id: '15', name: 'Mr. Quirino G. Barlis', role: 'Ninong', relationship: '' },
+      { id: '16', name: 'Mrs. Melinda F. Barlis', role: 'Ninang', relationship: '' },
+      { id: '17', name: 'Mr. Eulalio L. Agano Jr.', role: 'Ninong', relationship: '' },
+      { id: '18', name: 'Mrs. Vilma A. Vergara', role: 'Ninang', relationship: '' },
+      { id: '19', name: 'Engr. Eduardo M. Gampon', role: 'Ninong', relationship: '' },
+      { id: '20', name: 'Mrs. Catherine D. Gampon', role: 'Ninang', relationship: '' },
+      { id: '21', name: 'Mr. Arlen C. Posoc', role: 'Ninong', relationship: '' },
+      { id: '22', name: 'Mrs. Virginia D. Rabago', role: 'Ninang', relationship: '' },
+      { id: '23', name: 'Mr. Cesar Ledina', role: 'Ninong', relationship: '' },
+      { id: '24', name: 'Mrs. Elena Montoya', role: 'Ninang', relationship: '' },
+      { id: '25', name: 'Hon. Roel P. Quiroz', role: 'Ninong', relationship: '' },
+      { id: '26', name: 'Cong. Maria Cristina C. Angeles', role: 'Ninang', relationship: '' },
     ],
   },
   {
     id: 'best-man-moh',
     title: 'Best Man & Maid of Honor',
     members: [
-      { id: '4', name: 'Best Man Name', role: 'Best Man', relationship: 'Groom\'s best friend' },
-      { id: '5', name: 'Maid of Honor Name', role: 'Maid of Honor', relationship: 'Bride\'s sister' },
+      { id: '27', name: 'Kim Adlyn V. Marcos', role: 'Best Man', relationship: '' },
+      { id: '28', name: 'Marferie Mae V. Acosta', role: 'Maid of Honor', relationship: '' },
     ],
   },
   {
-    id: 'groomsmen',
-    title: 'Groomsmen',
+    id: 'bridesmaids-groomsmen',
+    title: 'Bridesmaids & Groomsmen',
     members: [
-      { id: '6', name: 'Groomsman One', role: 'Groomsman', relationship: 'College friend' },
-      { id: '7', name: 'Groomsman Two', role: 'Groomsman', relationship: 'Brother' },
-      { id: '8', name: 'Groomsman Three', role: 'Groomsman', relationship: 'Childhood friend' },
-    ],
-  },
-  {
-    id: 'bridesmaids',
-    title: 'Bridesmaids',
-    members: [
-      { id: '9', name: 'Bridesmaid One', role: 'Bridesmaid', relationship: 'Best friend' },
-      { id: '10', name: 'Bridesmaid Two', role: 'Bridesmaid', relationship: 'Cousin' },
-      { id: '11', name: 'Bridesmaid Three', role: 'Bridesmaid', relationship: 'Coworker' },
+      { id: '29', name: 'Kristabelle L. Duque', role: 'Bridesmaid', relationship: '' },
+      { id: '30', name: 'Julie D. Tabamo', role: 'Bridesmaid', relationship: '' },
+      { id: '31', name: 'Sally D. Tabamo', role: 'Bridesmaid', relationship: '' },
+      { id: '32', name: 'Joshua A. Claudio', role: 'Groomsman', relationship: '' },
     ],
   },
   {
     id: 'secondary-sponsors',
     title: 'Secondary Sponsors',
     members: [
-      { id: '12', name: 'Candle Sponsor 1', role: 'Candle Sponsor', relationship: '' },
-      { id: '13', name: 'Candle Sponsor 2', role: 'Candle Sponsor', relationship: '' },
-      { id: '14', name: 'Veil Sponsor 1', role: 'Veil Sponsor', relationship: '' },
-      { id: '15', name: 'Veil Sponsor 2', role: 'Veil Sponsor', relationship: '' },
-      { id: '16', name: 'Cord Sponsor 1', role: 'Cord Sponsor', relationship: '' },
-      { id: '17', name: 'Cord Sponsor 2', role: 'Cord Sponsor', relationship: '' },
+      { id: '33', name: 'Kristabelle L. Duque', role: 'Candle', relationship: '' },
+      { id: '34', name: 'Julie D. Tabamo', role: 'Veil', relationship: '' },
+      { id: '35', name: 'Sally D. Tabamo', role: 'Cord', relationship: '' },
     ],
   },
   {
     id: 'bearers',
-    title: 'Ring Bearer & Flower Girls',
+    title: 'Special Roles',
     members: [
-      { id: '18', name: 'Ring Bearer Name', role: 'Ring Bearer', relationship: 'Nephew' },
-      { id: '19', name: 'Flower Girl One', role: 'Flower Girl', relationship: 'Niece' },
-      { id: '20', name: 'Flower Girl Two', role: 'Flower Girl', relationship: 'Cousin' },
+      { id: '36', name: 'Kdenn Terrence B. Marcos', role: 'Ring Bearer', relationship: '' },
+      { id: '37', name: 'Ryle Zion B. Marcos', role: 'Coin Bearer', relationship: '' },
+      { id: '38', name: 'Arvin Joaquin M. David', role: 'Bible Bearer', relationship: '' },
+      { id: '39', name: 'Eliza S. Pamintuan', role: 'Flower Girl', relationship: '' },
+      { id: '40', name: 'Apollo M. Uy', role: '', relationship: '' },
     ],
   },
 ];
@@ -84,13 +110,13 @@ function MemberCard({ member }: MemberCardProps) {
       </h4>
 
       {/* Role */}
-      <p className="text-[10px] text-wedding-primary-600 font-medium uppercase tracking-wide mt-0.5">
+      <p className="text-[10px] text-wedding-primary-500 font-medium uppercase tracking-wide mt-0.5">
         {member.role}
       </p>
 
       {/* Relationship (optional) */}
       {member.relationship && (
-        <p className="text-[10px] text-wedding-secondary-500 mt-0.5">
+        <p className="text-[10px] text-wedding-secondary-600 mt-0.5">
           {member.relationship}
         </p>
       )}
@@ -109,14 +135,11 @@ function GroupSection({ group, isExpanded, onToggle }: GroupSectionProps) {
     <Card className="mb-4 last:mb-0">
       <button
         onClick={onToggle}
-        className="w-full px-4 sm:px-6 py-3 flex items-center justify-between text-left hover:bg-wedding-primary-50/50 transition-colors rounded-t-lg"
+        className="w-full px-4 sm:px-6 py-3 flex items-center justify-between text-left hover:bg-wedding-rockblue/10 transition-colors rounded-t-lg"
         aria-expanded={isExpanded}
       >
         <h3 className="heading-subsection text-base sm:text-lg">{group.title}</h3>
         <span className="flex items-center gap-2">
-          <span className="text-xs text-wedding-secondary-500">
-            {group.members.length} {group.members.length === 1 ? 'person' : 'people'}
-          </span>
           <svg
             className={cn(
               'w-4 h-4 text-wedding-primary-500 transition-transform duration-300',

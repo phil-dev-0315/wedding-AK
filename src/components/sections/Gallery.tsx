@@ -105,7 +105,7 @@ function Lightbox({ image, onClose, onPrev, onNext, hasPrev, hasNext }: Lightbox
         className="relative max-w-4xl max-h-[80vh] w-full"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative w-full h-[60vh] bg-wedding-charcoal/50 rounded-lg overflow-hidden">
+        <div className="relative w-full h-[60vh] bg-wedding-primary-900/50 rounded-lg overflow-hidden">
           <Image
             src={image.src}
             alt={image.alt}
@@ -173,7 +173,7 @@ export function Gallery({
               onClick={() => handleImageClick(index)}
               className={cn(
                 'relative overflow-hidden rounded-lg',
-                'bg-wedding-secondary-100',
+                'bg-wedding-rockblue/10',
                 'group cursor-pointer',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-wedding-primary-500 focus-visible:ring-offset-2',
                 'transition-all duration-300',

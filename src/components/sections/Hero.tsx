@@ -52,12 +52,12 @@ export function Hero({
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${backgroundImage})` }}
             />
-            {/* Overlay */}
+            {/* Overlay - elegant dark blue gradient */}
             <div className="absolute inset-0 gradient-overlay" />
           </>
         ) : (
-          /* Default elegant white and blue gradient background */
-          <div className="absolute inset-0 bg-gradient-to-br from-white via-wedding-primary-50 to-wedding-primary-100" />
+          /* Default elegant seashell to rock blue gradient background */
+          <div className="absolute inset-0 bg-gradient-to-br from-wedding-seashell via-wedding-rockblue/10 to-wedding-tan/20" />
         )}
       </div>
 
@@ -67,7 +67,7 @@ export function Hero({
         <p
           className={cn(
             'font-script text-2xl sm:text-3xl md:text-4xl mb-4',
-            backgroundImage ? 'text-white/90' : 'text-wedding-primary-600',
+            backgroundImage ? 'text-wedding-tan' : 'text-wedding-primary-500',
             'transition-all duration-700 ease-out',
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           )}
@@ -100,13 +100,13 @@ export function Hero({
           <span
             className={cn(
               'h-px w-12 md:w-20',
-              backgroundImage ? 'bg-white/50' : 'bg-wedding-primary-300'
+              backgroundImage ? 'bg-wedding-tan/50' : 'bg-wedding-tan'
             )}
           />
           <span
             className={cn(
               'text-lg',
-              backgroundImage ? 'text-white/70' : 'text-wedding-primary-400'
+              backgroundImage ? 'text-wedding-tan' : 'text-wedding-tan'
             )}
           >
             ♥
@@ -114,7 +114,7 @@ export function Hero({
           <span
             className={cn(
               'h-px w-12 md:w-20',
-              backgroundImage ? 'bg-white/50' : 'bg-wedding-primary-300'
+              backgroundImage ? 'bg-wedding-tan/50' : 'bg-wedding-tan'
             )}
           />
         </div>
@@ -123,7 +123,7 @@ export function Hero({
         <p
           className={cn(
             'font-display text-xl sm:text-2xl md:text-3xl',
-            backgroundImage ? 'text-white/90' : 'text-wedding-secondary-700',
+            backgroundImage ? 'text-wedding-seashell' : 'text-wedding-secondary-600',
             'transition-all duration-700 ease-out delay-300',
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           )}
@@ -153,7 +153,7 @@ export function Hero({
             size="lg"
             className={cn(
               'w-full sm:w-auto min-w-[160px]',
-              backgroundImage && 'border-white text-white hover:bg-white/10'
+              backgroundImage && 'border-wedding-seashell text-wedding-seashell hover:bg-wedding-seashell/10'
             )}
           >
             View Schedule
@@ -173,7 +173,7 @@ export function Hero({
           onClick={() => scrollToElement('countdown', 0)}
           className={cn(
             'flex flex-col items-center gap-2 p-2',
-            backgroundImage ? 'text-white/70 hover:text-white' : 'text-wedding-secondary-500 hover:text-wedding-secondary-700',
+            backgroundImage ? 'text-wedding-seashell/70 hover:text-wedding-seashell' : 'text-wedding-secondary-500 hover:text-wedding-primary-500',
             'transition-colors duration-300'
           )}
           aria-label="Scroll to countdown"

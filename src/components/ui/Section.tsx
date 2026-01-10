@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   /** Background color variant */
-  variant?: 'default' | 'cream' | 'white' | 'muted';
+  variant?: 'default' | 'primary' | 'cream' | 'white' | 'muted';
   /** Whether to add standard section padding */
   padded?: boolean;
   /** Custom section ID for navigation */
@@ -15,10 +15,11 @@ export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 const Section = forwardRef<HTMLElement, SectionProps>(
   ({ className, variant = 'default', padded = true, sectionId, children, ...props }, ref) => {
     const variants = {
-      default: 'bg-wedding-cream',
-      cream: 'bg-wedding-cream',
+      default: 'bg-wedding-seashell',
+      primary: 'bg-wedding-primary-800',
+      cream: 'bg-wedding-seashell',
       white: 'bg-white',
-      muted: 'bg-wedding-primary-50',
+      muted: 'bg-wedding-rockblue/10',
     };
 
     return (
@@ -63,7 +64,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
           <p className="mt-3 text-body-sm max-w-2xl mx-auto">{subtitle}</p>
         )}
         <div className="divider-ornament mt-4">
-          <span className="text-wedding-primary-400">✦</span>
+          <span className="text-wedding-tan">✦</span>
         </div>
       </div>
     );
