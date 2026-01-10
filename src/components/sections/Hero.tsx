@@ -12,7 +12,7 @@ interface HeroProps {
 }
 
 export function Hero({
-  coupleNames = 'Abigail & Kings Lee',
+  coupleNames = 'Kings Lee & Abigail',
   weddingDate = '2026-03-07T15:00:00',
   tagline = 'We\'re getting married!',
   backgroundImage,
