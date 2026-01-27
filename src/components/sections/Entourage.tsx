@@ -66,16 +66,9 @@ const defaultEntourageGroups: EntourageGroup[] = [
       { id: '29', name: 'Kristabelle L. Duque', role: 'Bridesmaid', relationship: '' },
       { id: '30', name: 'Julie D. Tabamo', role: 'Bridesmaid', relationship: '' },
       { id: '31', name: 'Sally D. Tabamo', role: 'Bridesmaid', relationship: '' },
-      { id: '32', name: 'Joshua A. Claudio', role: 'Groomsman', relationship: '' },
-    ],
-  },
-  {
-    id: 'secondary-sponsors',
-    title: 'Secondary Sponsors',
-    members: [
-      { id: '33', name: 'Kristabelle L. Duque', role: 'Candle', relationship: '' },
-      { id: '34', name: 'Julie D. Tabamo', role: 'Veil', relationship: '' },
-      { id: '35', name: 'Sally D. Tabamo', role: 'Cord', relationship: '' },
+      { id: '32', name: 'Eduard Darrel P. Rivera', role: 'Groomsman', relationship: '' },
+      { id: '33', name: 'Andrian N. Flores', role: 'Groomsman', relationship: '' },
+      { id: '34', name: 'Joshua A. Claudio', role: 'Groomsman', relationship: '' },
     ],
   },
   {
@@ -86,7 +79,8 @@ const defaultEntourageGroups: EntourageGroup[] = [
       { id: '37', name: 'Ryle Zion B. Marcos', role: 'Coin Bearer', relationship: '' },
       { id: '38', name: 'Arvin Joaquin M. David', role: 'Bible Bearer', relationship: '' },
       { id: '39', name: 'Eliza S. Pamintuan', role: 'Flower Girl', relationship: '' },
-      { id: '40', name: 'Apollo M. Uy', role: '', relationship: '' },
+      { id: '40', name: 'Apollo M. Uy', role: 'Flower Boy', relationship: '' },
+      { id: '41', name: 'Rai Zailey B. Marcos', role: 'Flower Girl', relationship: '' },
     ],
   },
 ];
