@@ -1,28 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import { Section, SectionHeader, Container, Card, CardContent } from '@/components/ui';
-import { cn } from '@/lib/utils';
-import type { WeddingTheme, WeddingRule, ColorSwatch } from '@/types';
-
-// Default placeholder data
-const defaultTheme: WeddingTheme = {
-  name: 'Elegant Blue & Neutral',
-  description: 'A timeless celebration of elegance and romance, featuring calming blues and warm neutral tones.',
-  colors: [
-    { name: 'Dark Blue', hex: '#323C63', description: 'Primary' },
-    { name: 'Blue Gray', hex: '#8B9BAC', description: 'Secondary' },
-    { name: 'Rock Blue', hex: '#9BB2C8', description: 'Accent' },
-    { name: 'Tan', hex: '#D2B38F', description: 'Warm Accent' },
-    { name: 'Seashell', hex: '#FFF5EC', description: 'Background' },
-  ],
-};
+import type { WeddingRule } from '@/types';
 
 const defaultRules: WeddingRule[] = [
-  {
-    icon: 'dress',
-    title: 'Dress Code',
-    description: 'Semi-formal to formal attire. Ladies in cocktail dresses or gowns, gentlemen in suits or barong. Please avoid wearing white, ivory, or cream.',
-  },
   {
     icon: 'phone',
     title: 'Unplugged Ceremony',
@@ -51,26 +33,10 @@ const defaultRules: WeddingRule[] = [
 ];
 
 interface WeddingThemeSectionProps {
-  theme?: WeddingTheme;
+  attireGuideImage?: string;
   rules?: WeddingRule[];
   title?: string;
   subtitle?: string;
-}
-
-function ColorSwatchDisplay({ color }: { color: ColorSwatch }) {
-  return (
-    <div className="flex flex-col items-center">
-      <div
-        className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-sm border border-wedding-tan/30"
-        style={{ backgroundColor: color.hex }}
-        title={color.hex}
-      />
-      <p className="mt-2 text-sm font-medium text-wedding-charcoal">{color.name}</p>
-      {color.description && (
-        <p className="text-xs text-wedding-secondary-600">{color.description}</p>
-      )}
-    </div>
-  );
 }
 
 function RuleIcon({ icon }: { icon?: string }) {
@@ -125,7 +91,7 @@ function RuleCard({ rule }: { rule: WeddingRule }) {
 }
 
 export function WeddingThemeSection({
-  theme = defaultTheme,
+  attireGuideImage = '/images/attire-guide.png',
   rules = defaultRules,
   title = 'Wedding Details',
   subtitle = 'Everything you need to know before the big day',
@@ -135,24 +101,19 @@ export function WeddingThemeSection({
       <Container>
         <SectionHeader title={title} subtitle={subtitle} />
 
-        {/* Theme & Color Palette */}
+        {/* Attire Guide */}
         <div className="mb-12 md:mb-16">
           <Card>
             <CardContent className="p-6 sm:p-8">
-              <div className="text-center mb-8">
-                <h3 className="font-script text-3xl sm:text-4xl text-wedding-primary-500 mb-2">
-                  {theme.name}
-                </h3>
-                <p className="text-body-sm max-w-2xl mx-auto">
-                  {theme.description}
-                </p>
-              </div>
-
-              {/* Color swatches */}
-              <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
-                {theme.colors.map((color) => (
-                  <ColorSwatchDisplay key={color.hex} color={color} />
-                ))}
+              <div className="flex justify-center">
+                <Image
+                  src={attireGuideImage}
+                  alt="Wedding Attire Guide"
+                  width={800}
+                  height={900}
+                  className="w-full max-w-2xl h-auto"
+                  priority
+                />
               </div>
             </CardContent>
           </Card>

@@ -67,7 +67,9 @@ export function Hero({
         <p
           className={cn(
             'font-script text-2xl sm:text-3xl md:text-4xl mb-4',
-            backgroundImage ? 'text-wedding-tan' : 'text-wedding-primary-500',
+            backgroundImage
+              ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+              : 'text-wedding-primary-500',
             'transition-all duration-700 ease-out',
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           )}
@@ -100,13 +102,13 @@ export function Hero({
           <span
             className={cn(
               'h-px w-12 md:w-20',
-              backgroundImage ? 'bg-wedding-tan/50' : 'bg-wedding-tan'
+              backgroundImage ? 'bg-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'bg-wedding-tan'
             )}
           />
           <span
             className={cn(
               'text-lg',
-              backgroundImage ? 'text-wedding-tan' : 'text-wedding-tan'
+              backgroundImage ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-wedding-tan'
             )}
           >
             ♥
@@ -114,7 +116,7 @@ export function Hero({
           <span
             className={cn(
               'h-px w-12 md:w-20',
-              backgroundImage ? 'bg-wedding-tan/50' : 'bg-wedding-tan'
+              backgroundImage ? 'bg-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'bg-wedding-tan'
             )}
           />
         </div>

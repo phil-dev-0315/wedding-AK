@@ -92,6 +92,9 @@ async function submitRSVP(data: RSVPFormData): Promise<{ success: boolean; messa
   return { success: true, message: 'Your RSVP has been recorded!' };
 }
 
+// Set to false to enable the RSVP form when the guest list is ready
+const RSVP_DISABLED = true;
+
 export function RSVPForm({
   title = 'RSVP',
   subtitle = 'Please let us know if you can join us on our special day',
@@ -289,6 +292,25 @@ export function RSVPForm({
 
         <Card className="max-w-lg mx-auto">
           <CardContent className="p-6 sm:p-8">
+            {/* RSVP Disabled - Coming Soon */}
+            {RSVP_DISABLED ? (
+              <div className="text-center space-y-4 py-8">
+                <div className="w-16 h-16 mx-auto rounded-full bg-wedding-primary-100 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-wedding-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl text-wedding-charcoal mb-2">
+                    Coming Soon
+                  </h3>
+                  <p className="text-wedding-secondary-600">
+                    RSVP will be available shortly. Please check back soon!
+                  </p>
+                </div>
+              </div>
+            ) : (
+            <>
             {/* Step indicator */}
             {step !== 'confirmation' && step !== 'already-responded' && (
               <div className="flex items-center justify-center gap-2 mb-6">
@@ -595,6 +617,8 @@ export function RSVPForm({
                   Search for another guest
                 </Button>
               </div>
+            )}
+            </>
             )}
           </CardContent>
         </Card>
