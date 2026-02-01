@@ -27,13 +27,13 @@ const defaultEntourageGroups: EntourageGroup[] = [
     id: 'principal-sponsors',
     title: 'Principal Sponsors',
     members: [
-      { id: '5', name: 'Mr. Roy P. Acosta', role: 'Ninong', relationship: '' },
+      { id: '5', name: 'Mr. Ferry Roy P. Acosta', role: 'Ninong', relationship: '' },
       { id: '6', name: 'Mrs. Fe V. Acosta', role: 'Ninang', relationship: '' },
       { id: '7', name: 'Engr. Renato Z. Martinez', role: 'Ninong', relationship: '' },
       { id: '8', name: 'Dr. Joanne Marie I. Escalona', role: 'Ninang', relationship: '' },
       { id: '9', name: 'Dr. Ricky C. Junio', role: 'Ninong', relationship: '' },
       { id: '10', name: 'Mrs. Cheer A. De Ala', role: 'Ninang', relationship: '' },
-      { id: '11', name: 'Augusto Ballesteros', role: 'Ninong', relationship: '' },
+      { id: '11', name: 'Mr. Augusto Ballesteros', role: 'Ninong', relationship: '' },
       { id: '12', name: 'Mrs. Arlene M. Pineda', role: 'Ninang', relationship: '' },
       { id: '13', name: 'Engr. Hermon G. Ines', role: 'Ninong', relationship: '' },
       { id: '14', name: 'Dr. Glenda L. Constantino', role: 'Ninang', relationship: '' },
@@ -41,14 +41,14 @@ const defaultEntourageGroups: EntourageGroup[] = [
       { id: '16', name: 'Mrs. Melinda F. Barlis', role: 'Ninang', relationship: '' },
       { id: '17', name: 'Mr. Eulalio L. Agano Jr.', role: 'Ninong', relationship: '' },
       { id: '18', name: 'Mrs. Vilma A. Vergara', role: 'Ninang', relationship: '' },
-      { id: '19', name: 'Engr. Eduardo M. Gampon', role: 'Ninong', relationship: '' },
-      { id: '20', name: 'Mrs. Catherine D. Gampon', role: 'Ninang', relationship: '' },
-      { id: '21', name: 'Mr. Arlen C. Posoc', role: 'Ninong', relationship: '' },
-      { id: '22', name: 'Mrs. Virginia D. Rabago', role: 'Ninang', relationship: '' },
-      { id: '23', name: 'Mr. Cesar Ledina', role: 'Ninong', relationship: '' },
-      { id: '24', name: 'Mrs. Elena Montoya', role: 'Ninang', relationship: '' },
-      { id: '25', name: 'Hon. Roel P. Quiroz', role: 'Ninong', relationship: '' },
-      { id: '26', name: 'Cong. Maria Cristina C. Angeles', role: 'Ninang', relationship: '' },
+      { id: '19', name: 'Hon. Roel P. Quiroz', role: 'Ninong', relationship: '' },
+      { id: '20', name: 'Cong. Maria Cristina C. Angeles', role: 'Ninang', relationship: '' },
+      { id: '21', name: 'Engr. Eduardo M. Gampon', role: 'Ninong', relationship: '' },
+      { id: '22', name: 'Mrs. Catherine D. Gampon', role: 'Ninang', relationship: '' },
+      { id: '23', name: 'Mr. Arlen C. Posoc', role: 'Ninong', relationship: '' },
+      { id: '24', name: 'Mrs. Virginia D. Rabago', role: 'Ninang', relationship: '' },
+      { id: '25', name: 'Mr. Cesar A. Ledina', role: 'Ninong', relationship: '' },
+      { id: '26', name: 'Mrs. Elena A. Montoya', role: 'Ninang', relationship: '' },
     ],
   },
   {
@@ -155,11 +155,35 @@ function GroupSection({ group, isExpanded, onToggle }: GroupSectionProps) {
         )}
       >
         <CardContent className="pt-0 pb-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {group.members.map((member) => (
-              <MemberCard key={member.id} member={member} />
-            ))}
-          </div>
+          {group.title === 'Principal Sponsors' ? (
+            // Special layout for Principal Sponsors - two columns (Ninong/Ninang) centered
+            <div className="flex">
+              <div className="grid grid-cols-2 gap-8 sm:gap-16 max-w-2xl">
+                {/* Ninong Column */}
+                <div className="flex flex-col">
+                  {group.members
+                    .filter((m) => m.role === 'Ninong')
+                    .map((member) => (
+                      <MemberCard key={member.id} member={member} />
+                    ))}
+                </div>
+                {/* Ninang Column */}
+                <div className="flex flex-col">
+                  {group.members
+                    .filter((m) => m.role === 'Ninang')
+                    .map((member) => (
+                      <MemberCard key={member.id} member={member} />
+                    ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+              {group.members.map((member) => (
+                <MemberCard key={member.id} member={member} />
+              ))}
+            </div>
+          )}
         </CardContent>
       </div>
     </Card>

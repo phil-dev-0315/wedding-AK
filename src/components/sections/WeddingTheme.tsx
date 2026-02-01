@@ -18,7 +18,7 @@ const defaultRules: WeddingRule[] = [
   {
     icon: 'parking',
     title: 'Parking',
-    description: 'Complimentary valet parking will be available at the venue. Please have your vehicle ready by the designated time.',
+    description: 'The venue has designated parking areas for our guests. While it can accommodate many vehicles, we kindly suggest arriving early to secure a spot. Should the parking area be full, there are alternative parking options available nearby.',
   },
   {
     icon: 'gift',
@@ -28,7 +28,7 @@ const defaultRules: WeddingRule[] = [
   {
     icon: 'hashtag',
     title: 'Share the Love',
-    description: 'After the ceremony, share your photos using our wedding hashtag: #AbiTheOneForKings2026',
+    description: 'After the ceremony, share your photos using our wedding hashtag: #ABBYTheOneForKINGS',
   },
 ];
 

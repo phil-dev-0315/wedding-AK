@@ -21,7 +21,7 @@ export function Footer({
   weddingDate = '2026-03-07',
   message = 'Thank you for being part of our story. We can\'t wait to celebrate with you!',
   socialLinks,
-  hashtag = `#CoupleNameWedding2025`,
+  hashtag = `#ABBYTheOneForKINGS`,
 }: FooterProps) {
   const year = new Date().getFullYear();
 

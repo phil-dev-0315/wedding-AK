@@ -9,7 +9,7 @@ export const weddingConfig = {
   // Couple Information
   couple: {
     names: process.env.NEXT_PUBLIC_COUPLE_NAMES || 'Partner One & Partner Two',
-    hashtag: '#AbiTheOneForKings2026',
+    hashtag: '#ABBYTheOneForKINGS',
   },
 
   // Wedding Date & Time
