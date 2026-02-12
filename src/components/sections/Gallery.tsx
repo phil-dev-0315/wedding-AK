@@ -140,6 +140,21 @@ const defaultImages: GalleryImage[] = [
     width: 800,
     height: 600,
   },
+  {
+    id: '20',
+    src: '/images/gallery/41AK.png',
+    alt: 'Gallery Photo 20',
+    width: 800,
+    height: 600,
+  },
+  {
+    id: '21',
+    src: '/images/gallery/rsvp.png',
+    alt: 'Gallery Photo 21',
+    width: 800,
+    height: 600,
+  },
+  
 ];
 
 interface GalleryProps {

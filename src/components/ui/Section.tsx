@@ -59,9 +59,9 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
         )}
         {...props}
       >
-        <h2 className="heading-section text-balance">{title}</h2>
+        <h2 className="font-script text-4xl md:text-5xl lg:text-6xl text-wedding-charcoal tracking-tight text-balance">{title}</h2>
         {subtitle && (
-          <p className="mt-3 text-body-sm max-w-2xl mx-auto">{subtitle}</p>
+          <p className="mt-3 text-body-sm max-w-2xl mx-auto text-center justify-center">{subtitle}</p>
         )}
         <div className="divider-ornament mt-4">
           <span className="text-wedding-tan">✦</span>
